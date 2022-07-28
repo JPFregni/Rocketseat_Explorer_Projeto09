@@ -1,0 +1,282 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --font-primary: 'Staatliches', cursive, sans-serif;
+  --font-secondary: 'Palanquin', sans-serif;
+
+  --fs-heading: 4rem;
+  --fs-text: 2rem;
+ 
+  --bg-heading: #8E9AAF;
+  --bg-head-content: #CBC0D3;
+  --tx-head-color: #ffffff;
+
+  --bg-main: #EFF1FF;
+  --tx-main-color: #23053A;
+
+  --bg-card: #FEEAFA;
+  --tx-card: #4A4E69;
+}
+
+body {
+  background: var(--bg-main);
+}
+
+header {
+  background: var(--bg-heading);
+
+  text-align: center;
+  animation: topdown 700ms;
+}
+
+header img {
+  margin: 3.2rem 0;
+  width: 13.7rem;
+  height: 13.7rem;
+}
+
+header h1 {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  background: var(--bg-head-content);
+  color: var(--tx-head-color);
+
+  font-family: var(--font-primary);
+  font-size: var(--fs-heading);
+  font-weight: normal;
+  line-height: 3.4rem;
+
+  padding: 0.7rem 0;
+  margin-bottom: 2.9rem;
+}
+
+main {
+  padding: 0 3.2rem;
+  animation: downtop 700ms 350ms backwards;
+}
+
+aside {
+  animation: topdown 700ms;
+  padding: 0 3.2rem;
+}
+
+section {
+  margin-top: 1.4rem;
+}
+
+section p {
+  text-align: center;
+
+  color: var(--tx-main-color);
+  font-family: var(--font-secondary);
+  font-size: var(--fs-text);
+  line-height: 1.5rem;
+}
+
+.cards {
+  margin: 6.3rem 0 3.15rem;
+
+  display: grid;
+  gap: 3.2rem;
+}
+
+.card {
+  position: relative;
+
+  font-family: var(--font-primary);
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.card img {
+  object-fit: cover;
+
+  border-radius: 20px;
+
+  transition: all 200ms;
+
+  filter: brightness(0.8);
+}
+
+.card img:hover {
+  transform: scale(1.1);
+  filter: brightness(1);
+}
+
+.card h2 {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+
+  font-size: var(--fs-text);
+  font-weight: 400;
+}
+
+.card h2 span {
+  border-radius: 2rem;
+  background-color: var(--bg-card);
+
+  color: var(--tx-card);
+  padding: 0 1.6rem;
+
+  width: fit-content;
+  height: 3.4rem;
+
+  display: inline-flex;
+  align-items: center;
+}
+
+footer p {
+  text-align: center;
+
+  color: var(--tx-main-color);
+  font-family: var(--font-secondary);
+  font-size: var(--fs-text);
+  line-height: 1.5rem;
+
+  margin-bottom: 3.15rem;
+}
+
+@keyframes topdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes downtop {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width:425px) {
+  .cards {
+    grid-template-areas: 
+    'A C'
+    'B D';
+  }
+
+  .cards .card:nth-child(1){
+    grid-area: A;
+  }
+  .cards .card:nth-child(2){
+    grid-area: B;
+  }
+  .cards .card:nth-child(3){
+    grid-area: C;
+  }
+  .cards .card:nth-child(4){
+    grid-area: D;
+  }
+
+  .cards .card:nth-child(5){
+    display: none;
+  }
+
+  .cards .card:nth-child(6){
+    display: none;
+  }
+}
+
+@media (min-width:900px) {
+  body {
+    display: grid;
+    grid-template-areas: 
+    'header main main'
+    'aside main main'
+    'aside footer footer'
+    ;
+  }
+
+  header {
+    grid-area: header;
+  }
+
+  aside {
+    grid-area: aside;
+    background: var(--bg-heading);
+    padding: 0;
+  }
+
+  aside p {
+    margin: auto;
+    color: var(--tx-head-color);
+    width: 27.5rem;
+    line-height: 2.5rem;
+  }
+
+  main {
+    grid-area: main;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+
+  .card img:hover {
+    transform: scale(1.05);
+  }
+
+  .cards {
+    grid-template-areas: 
+    'A B C'
+    'D B F'
+    'D E F';
+  }
+
+  .cards .card:nth-child(1){
+    grid-area: A;
+  }
+  .cards .card:nth-child(2){
+    grid-area: B;
+  }
+  .cards .card:nth-child(3){
+    grid-area: C;
+  }
+  .cards .card:nth-child(4){
+    grid-area: D;
+  }
+
+  .cards .card:nth-child(5){
+    grid-area: E;
+    display: initial;
+  }
+
+  .cards .card:nth-child(6){
+    grid-area: F;
+    display: initial;
+  }
+}
+
+@media (min-width:2000px) {
+ aside p{
+  width: 450px;
+  line-height: 5rem;
+  font-size: 4rem;
+ }
+ .card h2 span {
+  padding: 0 2rem;
+ }
+}
